@@ -19,8 +19,11 @@ public class Menu {
             if (res != 5) {
                 switch (res) {
                     case 1:
-                        System.out.println("Hola");
-                        universidad.recorreAulas();
+                    System.out.println("Ingrese el numero de piso:\n");
+                    int piso = sc.nextInt();
+                    System.out.println("Ingrese el codigo de la asignatura/Curso de extension/Evento:\n");
+                    String cod = sc.next();
+                    universidad.consultaAulas(piso, cod);
                 }
             }
         } while (res != 5);
