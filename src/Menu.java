@@ -19,6 +19,7 @@ public class Menu {
             if (res != 5) {
                 switch (res) {
                     case 1:
+                        System.out.println("Hola");
                         universidad.recorreAulas();
                 }
             }
