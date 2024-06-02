@@ -3,19 +3,25 @@ package Universidad;
 public class Reserva {
     //Atributos
     private static int cantRes = 0;//Estatico, por que es propio de la clase
-    private final String codRes;
-    private final String fecha = "";
-    private final String rangoHorario = "";
+    private final int codRes;
+    private final String fecha;
+    private final String rangoHorario;
     //Realiza reserva apunta al tipo de reserva en una lista
-    private Reservador rs;
+    private final Reservador rs;
     //Constructor
-    public Reserva(String codRes, Reservador resvdor){
+    public Reserva(Reservador resvdor, String fecha, String rangoHorario){
         cantRes++;
-        this.codRes = codRes;
+        codRes = cantRes;
         rs=resvdor;
+        this.fecha = fecha;
+        this.rangoHorario = rangoHorario;
     }
     public Reservador getRs(){
         return rs;
+    }
+    @Override
+    public String toString(){
+        return "Codigo: "+codRes+" Fecha: "+fecha+" Rango: "+rangoHorario+rs.toString();
     }
     //Metodos
 

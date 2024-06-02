@@ -1,19 +1,17 @@
 package Universidad;
-import java.util.LinkedHashMap;
-import java.util.Iterator;
-import java.util.TreeMap;
+import java.util.*;
 
 public class Aula {
-    private final int numero;
+    private final String numero;
     private final int capMax;
-    private TreeMap<Integer, Reserva> reservas;
-    public Aula(int capMax, int id) {
+    private final HashMap<String, Reserva> reservas;
+    public Aula(int capMax, String num) {
         this.capMax = capMax;
-        this.numero = id;
-        this.reservas = new TreeMap<>();
+        this.numero = num;
+        this.reservas = new HashMap<>();
     }
     public int getPiso() {
-        return numero/100;
+        return numero.charAt(0);
     }
     public int getCapMax() {
         return capMax;
@@ -22,20 +20,12 @@ public class Aula {
     public String toString() {
         return "Aula " + numero + "\ncapMax = " + capMax;
     }
-    public void recorreReservas(Reservador resvdor) {
-        Iterator<Reserva> it = reservas.values().iterator();
-        boolean bandera = false;
-        while (it.hasNext()&&!bandera) {
-            Reserva reserva = it.next();
-            if(reserva.getRs()==resvdor){
-                bandera = true;
-                Reservador rsAct= reserva.getRs();
-                System.out.println(toString());
+    public void muestraxCodigo(String cod){
+        for(Reserva reserva : reservas.values()){
+            Reservador rsAct =reserva.getRs();
+            if(rsAct.getCod().equals(cod)){
+                System.out.println(this);
                 System.out.println(reserva);
-                while(it.hasNext()&&rsAct==resvdor){
-                   Reserva reservaAct= it.next();
-                   System.out.println(reserva);
-                }
             }
         }
     }

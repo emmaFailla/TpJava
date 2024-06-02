@@ -1,6 +1,6 @@
 package Universidad;
 
-class tipoEvento {
+public class tipoEvento {
     private String tipo;
     private float monto;
 
@@ -23,5 +23,9 @@ class tipoEvento {
 
     public void setMonto(float monto) {
         this.monto = monto;
+    }
+    @Override
+    public String toString() {
+        return "\ntipo de evento: " + tipo + "\nCobro de alquiler: " + monto;
     }
 }

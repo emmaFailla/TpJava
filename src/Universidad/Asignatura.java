@@ -3,16 +3,16 @@ package Universidad;
 public class Asignatura extends Reservador {
     private String codAlfaUniv;
     private String nomAsignatura;
-    private String rangoFech;
-    private String diaSemana;
+    private String rangoFechCurs;
+    private String diasDicta;
     private hora horario;
     private int cantAlumnoInsc;
     //Constructor
     public Asignatura(String codAlfaUniv, String nomAsignatura, String rangoFech, String diaSemana, int cantAlumnoInsc){
         this.codAlfaUniv = codAlfaUniv;
         this.nomAsignatura = nomAsignatura;
-        this.rangoFech = rangoFech;
-        this.diaSemana = diaSemana;
+        this.rangoFechCurs = rangoFech;
+        this.diasDicta = diaSemana;
         this.cantAlumnoInsc = cantAlumnoInsc;
     }
     public String getCod() {
@@ -27,17 +27,17 @@ public class Asignatura extends Reservador {
     public void setNom(String nom) {
         nomAsignatura = nom;
     }
-    public String getRangoFech() {
-        return rangoFech;
+    public String getRangoFechCurs() {
+        return rangoFechCurs;
     }
-    public void setRangoFech(String rangoFech) {
-        this.rangoFech = rangoFech;
+    public void setRangoFechCurs(String rangoFechCurs) {
+        this.rangoFechCurs = rangoFechCurs;
     }
-    public String getDiaSemana() {
-        return diaSemana;
+    public String getDiasDicta() {
+        return diasDicta;
     }
-    public void setDiaSemana(String diaSemana) {
-        this.diaSemana = diaSemana;
+    public void setDiasDicta(String diasDicta) {
+        this.diasDicta = diasDicta;
     }
     public hora getHorario() {
         return horario;
@@ -54,6 +54,6 @@ public class Asignatura extends Reservador {
 
     @Override
     public String toString() {
-        return "";
+        return "\nCodigo alfanumerico univoco: "+codAlfaUniv+"\nNombre: "+nomAsignatura+"\nRango de fechas de la cursada"+rangoFechCurs+"\nDias de la semana que se dicta: "+diasDicta+"\nHorario: "+horario.toString()+"\nCantidad de alumnos inscriptos: "+cantAlumnoInsc+"\n";
     }
 }

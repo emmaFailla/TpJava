@@ -7,11 +7,6 @@ public class CursoExtension extends Reservador {
     private int cantClases;
     private float costoCurso;
 
-    @Override
-    public String toString(){
-        return "Codigo Alfanumerico: "+codAlfa+"\nDescripcion:"+descripcion+"\nCantidad de inscripciones maxima:"+cantInscMax+"\nCantidad de clases: "+cantClases+"\nCosto por curso: "+costoCurso;
-    }
-
     public CursoExtension(String codAlfa, String descripcion, int cantInscMax, int cantClases, float costoCurso){
         this.codAlfa = codAlfa;
         this.descripcion = descripcion;
@@ -48,5 +43,9 @@ public class CursoExtension extends Reservador {
     }
     public void setCostoCurso(float costoCurso){
         this.costoCurso = costoCurso;
+    }
+    @Override
+    public String toString(){
+        return "Codigo Alfanumerico: "+codAlfa+"\nDescripcion:"+descripcion+"\nCantidad de inscripciones maxima:"+cantInscMax+"\nCantidad de clases: "+cantClases+"\nCosto por curso: "+costoCurso;
     }
 }

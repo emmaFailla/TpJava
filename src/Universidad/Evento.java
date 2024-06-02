@@ -54,6 +54,6 @@ public class Evento extends Reservador {
 
     @Override
     public String toString() {
-        return "";
+        return "Fecha: " + fecha + "\nHorario: " + horario + "\nCodigo: " + codigo + "\nDescripcion: " + descripcion + "\nCantidad Maxima de Participantes: " + cantMaxPart + "\nEvento: " + evento;
     }
 }
