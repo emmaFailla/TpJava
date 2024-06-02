@@ -25,6 +25,9 @@ public class Menu {
                     case 2:
                         fmenu.registraAulas(universidad);
                         break;
+                        case 4:
+                            fmenu.generaReportes(universidad);
+                            break;
                     default:
                         throw new IllegalStateException("Unexpected value: " + res);
                 }

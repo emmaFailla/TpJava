@@ -14,6 +14,9 @@ public class Aula {
     public int getPiso() {
         return numero /100;
     };
+    public HashMap<Integer,Reserva> getReservas(){
+        return reservas;
+    }
     public int getNum(){return numero;};
     public int getCapMax() {
         return capMax;
