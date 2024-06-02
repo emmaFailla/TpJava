@@ -3,12 +3,12 @@ package Universidad;
 public class Asignatura extends Reservador {
     private String codAlfaUniv;
     private String nomAsignatura;
-    private String rangoFechCurs;
+    private RangoFechas rangoFechCurs;
     private String diasDicta;
-    private hora horario;
+    private RangoHora horario;
     private int cantAlumnoInsc;
     //Constructor
-    public Asignatura(String codAlfaUniv, String nomAsignatura, String rangoFech, String diaSemana, int cantAlumnoInsc){
+    public Asignatura(String codAlfaUniv, String nomAsignatura, RangoFechas rangoFech, String diaSemana, int cantAlumnoInsc){
         this.codAlfaUniv = codAlfaUniv;
         this.nomAsignatura = nomAsignatura;
         this.rangoFechCurs = rangoFech;
@@ -27,10 +27,10 @@ public class Asignatura extends Reservador {
     public void setNom(String nom) {
         nomAsignatura = nom;
     }
-    public String getRangoFechCurs() {
+    public RangoFechas getRangoFechCurs() {
         return rangoFechCurs;
     }
-    public void setRangoFechCurs(String rangoFechCurs) {
+    public void setRangoFechCurs(RangoFechas rangoFechCurs) {
         this.rangoFechCurs = rangoFechCurs;
     }
     public String getDiasDicta() {
@@ -39,10 +39,10 @@ public class Asignatura extends Reservador {
     public void setDiasDicta(String diasDicta) {
         this.diasDicta = diasDicta;
     }
-    public hora getHorario() {
+    public RangoHora getHorario() {
         return horario;
     }
-    public void setHorario(hora horario) {
+    public void setHorario(RangoHora horario) {
         this.horario = horario;
     }
     public int getCantAlumnoInsc() {

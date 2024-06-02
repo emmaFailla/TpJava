@@ -6,6 +6,7 @@ public class Menu {
         Scanner sc = new Scanner(System.in);
         int res;
         Universidad universidad = new Universidad();
+        Funciones_Menu fmenu = new Funciones_Menu();
         do {
             System.out.println("Universidad CAECE - Sede Mar del Plata");
             System.out.println("Bienvenido, que desea hacer?");
@@ -19,12 +20,15 @@ public class Menu {
             if (res != 5) {
                 switch (res) {
                     case 1:
-                    System.out.println("Ingrese el numero de piso:\n");
-                    int piso = sc.nextInt();
-                    System.out.println("Ingrese el codigo de la asignatura/Curso de extension/Evento:\n");
-                    String cod = sc.next();
-                    universidad.consultaAulas(piso, cod);
+                        fmenu.consultaAulas(universidad);
+                        break;
+                    case 2:
+                        fmenu.registraAulas(universidad);
+                        break;
+                    default:
+                        throw new IllegalStateException("Unexpected value: " + res);
                 }
+
             }
         } while (res != 5);
     }

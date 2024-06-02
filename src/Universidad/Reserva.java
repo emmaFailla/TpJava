@@ -5,11 +5,11 @@ public class Reserva {
     private static int cantRes = 0;//Estatico, por que es propio de la clase
     private final int codRes;
     private final String fecha;
-    private final String rangoHorario;
+    private final RangoHora rangoHorario;
     //Realiza reserva apunta al tipo de reserva en una lista
     private final Reservador rs;
     //Constructor
-    public Reserva(Reservador resvdor, String fecha, String rangoHorario){
+    public Reserva(Reservador resvdor, String fecha, RangoHora rangoHorario){
         cantRes++;
         codRes = cantRes;
         rs=resvdor;

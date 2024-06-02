@@ -1,9 +1,9 @@
 package Universidad;
 
-public class hora {
+public class RangoHora {
     private String inicio;
     private String fin;
-    public hora(String inicio, String fin) {
+    public RangoHora(String inicio, String fin) {
         this.inicio = inicio;
         this.fin = fin;
     }

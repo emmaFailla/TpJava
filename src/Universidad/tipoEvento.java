@@ -2,11 +2,11 @@ package Universidad;
 
 public class tipoEvento {
     private String tipo;
-    private float monto;
+    private float cobroAlquiler;
 
     public tipoEvento(String tipo, float monto) {
         this.tipo = tipo;
-        this.monto = monto;
+        this.cobroAlquiler = monto;
     }
 
     public String getTipo() {
@@ -17,15 +17,15 @@ public class tipoEvento {
         this.tipo = tipo;
     }
 
-    public float getMonto() {
-        return monto;
+    public float getCobroAlquiler() {
+        return cobroAlquiler;
     }
 
-    public void setMonto(float monto) {
-        this.monto = monto;
+    public void setCobroAlquiler(float cobroAlquiler) {
+        this.cobroAlquiler = cobroAlquiler;
     }
     @Override
     public String toString() {
-        return "\ntipo de evento: " + tipo + "\nCobro de alquiler: " + monto;
+        return "\ntipo de evento: " + tipo + "\nCobro de alquiler: " + cobroAlquiler;
     }
 }

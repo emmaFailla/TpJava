@@ -2,12 +2,12 @@ package Universidad;
 
 public class Evento extends Reservador {
     private String fecha;
-    private hora horario;
+    private RangoHora horario;
     private String codigo;
     private String descripcion;
     private int cantMaxPart;
     private tipoEvento evento;
-    public  Evento(String fecha, hora horario, String codigo, String descripcion, int cantMaxPart, String tipo, float monto){
+    public  Evento(String fecha, RangoHora horario, String codigo, String descripcion, int cantMaxPart, String tipo, float monto){
         this.fecha = fecha;
         this.horario = horario;
         this.codigo = codigo;
@@ -45,10 +45,10 @@ public class Evento extends Reservador {
     public void setFecha(String fecha){
         this.fecha = fecha;
     }
-    public hora getHorario(){
+    public RangoHora getHorario(){
         return horario;
     }
-    public void setHorario(hora horario){
+    public void setHorario(RangoHora horario){
         this.horario = horario;
     }
 
