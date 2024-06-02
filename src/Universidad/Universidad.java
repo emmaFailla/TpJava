@@ -5,15 +5,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Universidad {
-    private final TreeMap<Integer, Aula> aulas = new TreeMap<>();
+    ///Atributos->
+    private final TreeMap<Integer, Aula> aulas = new TreeMap<>();//Mapa o set
     private final HashSet<Reservador> reservadores = new HashSet<>();
     Scanner sc = new Scanner(System.in);
+    ///Metodos ->
     public void filtraxPiso(int piso, String cod){
         int pisoInicial = piso*100;
         int pisoFinal = pisoInicial+99;
         Map<Integer, Aula> subAulas = aulas.subMap(pisoInicial, pisoFinal);
-        ArrayList<Aula> aulasConsultadas = new ArrayList<>(subAulas.values());
-        for (Aula aulaC : aulasConsultadas) {
+        for (Aula aulaC : subAulas.values()) {
             aulaC.muestraxCodigo(cod);
         }
     }
@@ -55,6 +56,19 @@ public class Universidad {
         RangoHora rango = new RangoHora(hi, hf);
 
     }
-    //Lista de todos los  tipos de reserva que cargamos desde el archivo xml y que utilizamos
-    //posteriormente para cargar reservas
+
+    public void reporteMonto(){
+        int montoAula,montoPiso,montoTotal,pisoAct,aulaAct;
+        montoTotal = 0;
+        //Recorro las aulas con ciclo for each ya que solo hay lectura, no hay modificaciones
+        for(Aula a : aulas.values()){
+            aulaAct = a.getNum();
+        }
+
+    }
+
+    public void reporteListado(){
+
+    }
+
 }

@@ -2,24 +2,27 @@ package Universidad;
 import java.util.*;
 
 public class Aula {
-    private final String numero;
+    private final int numero;
     private final int capMax;
-    private final HashMap<String, Reserva> reservas;
-    public Aula(int capMax, String num) {
+    private HashMap<Integer, Reserva> reservas;
+    public Aula(int capMax, int num) {
         this.capMax = capMax;
         this.numero = num;
         this.reservas = new HashMap<>();
     }
+    //Metodos
     public int getPiso() {
-        return numero.charAt(0);
-    }
+        return numero /100;
+    };
+    public int getNum(){return numero;};
     public int getCapMax() {
         return capMax;
-    }
+    };
     @Override
     public String toString() {
         return "Aula " + numero + "\ncapMax = " + capMax;
     }
+
     public void muestraxCodigo(String cod){
         for(Reserva reserva : reservas.values()){
             Reservador rsAct =reserva.getRs();
