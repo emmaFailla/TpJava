@@ -7,7 +7,6 @@ public class Menu {
         int res;
         Universidad universidad = new Universidad();
         Funciones_Menu fmenu = new Funciones_Menu();
-        System.out.println(("Ema se la come :)"));
         do {
             System.out.println("Universidad CAECE - Sede Mar del Plata");
             System.out.println("Bienvenido, que desea hacer?");

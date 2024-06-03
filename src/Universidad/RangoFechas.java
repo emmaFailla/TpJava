@@ -1,22 +1,54 @@
 package Universidad;
+import java.time.LocalDate;
 
-public class RangoFechas {
-    private String fechaInicio;
-    private String fechaFin;
-    public RangoFechas(String fechaInicio, String fechaFin) {
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
+public class RangoFechas implements Comparable<RangoFechas>{
+    private final LocalDate fechaInicial;
+    private final LocalDate fechaFinal;
+    public RangoFechas(LocalDate fechaInicial, LocalDate fechaFinal) {
+        this.fechaInicial = fechaInicial;
+        this.fechaFinal = fechaFinal;
     }
-    public String getFechaInicio() {
-        return fechaInicio;
+    public LocalDate getFechaInicial() {
+        return fechaInicial;
     }
-    public void setFechaInicio(String fechaInicio) {
-        this.fechaInicio = fechaInicio;
+    public LocalDate getFechaFinal() {
+        return fechaFinal;
     }
-    public String getFechaFin() {
-        return fechaFin;
+    @Override
+    public String toString() {
+        return "\nFecha inicial"+fechaInicial.toString()+"\nFecha final: "+fechaFinal.toString();
     }
-    public void setFechaFin(String fechaFin) {
-        this.fechaFin = fechaFin;
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        RangoFechas rangoh = (RangoFechas) obj;
+        return fechaInicial.equals(rangoh.getFechaInicial()) && fechaFinal.equals(rangoh.getFechaFinal());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = fechaInicial.hashCode();
+        result = 31 * result + fechaFinal.hashCode();
+        return result;
+    }
+
+    public boolean contains(LocalDate fecha) {
+        return (fecha.equals(fechaInicial) || fecha.isAfter(fechaInicial)) &&
+                (fecha.equals(fechaFinal) || fecha.isBefore(fechaFinal));
+    }
+
+    @Override
+    public int compareTo(RangoFechas rangoh) {
+        int compareStart = this.getFechaInicial().compareTo(rangoh.getFechaInicial());
+        if (compareStart != 0) {
+            return compareStart;
+        }
+        return this.getFechaFinal().compareTo(rangoh.getFechaFinal());
     }
 }

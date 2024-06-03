@@ -1,7 +1,7 @@
 package Universidad;
+import java.time.LocalDate;
 import java.util.*;
 import java.util.Map;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Universidad {
@@ -27,33 +27,14 @@ public class Universidad {
         return null;
     }
 
-    public void obtieneDatos(String fecha, RangoHora rangoh){
-        System.out.println("\n__Creando Reserva__");
-        System.out.println("Ingrese la fecha: ");
-        fecha = sc.nextLine();
-        System.out.println("Ingrese el horario inicial: ");
-        String horai = sc.next();
-        System.out.println("Ingrese la hora de fin: ");
-        String horaf = sc.next();
-        rangoh = new RangoHora(horai, horaf);
+    public void creaReservas(Reservador rs){
     }
 
-    public void creaReserva(){
-        String fecha = "";
-        RangoHora rangoH = null;
-        obtieneDatos(fecha, rangoH);
-        System.out.println("Fecha: " + fecha);
+    public void creaReservas(Reservador rs, LocalDate fechaInicial, RangoHora rangoh){
+
     }
 
-    public void creaReserva(char tipo, String nombre, float monto){
-        System.out.println("\n__Creando Reserva__");
-        System.out.println("Ingrese la fecha: ");
-        String fecha = sc.nextLine();
-        System.out.println("Ingrese el horario inicial: ");
-        String hi = sc.next();
-        System.out.println("Ingrese la hora de fin: ");
-        String hf = sc.next();
-        RangoHora rango = new RangoHora(hi, hf);
+    public void creaReservas(Reservador rs, char tipo, String nombre, float monto){
 
     }
 

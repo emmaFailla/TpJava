@@ -12,7 +12,8 @@ public class Aula {
     }
     //Metodos
     public int getPiso() {
-        return numero /100;
+        int piso = numero /100;
+        return piso < 0 ? 1 : piso;
     };
     public int getNum(){return numero;};
     public int getCapMax() {
@@ -32,4 +33,5 @@ public class Aula {
             }
         }
     }
+
 }
