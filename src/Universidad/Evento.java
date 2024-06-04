@@ -57,4 +57,6 @@ public class Evento extends Reservador {
     public String toString() {
         return "Fecha: " + fecha + "\nHorario: " + horario + "\nCodigo: " + codigo + "\nDescripcion: " + descripcion + "\nCantidad Maxima de Participantes: " + cantMaxPart + "\nEvento: " + evento;
     }
+
+    public int getCap(){return cantMaxPart;}
 }

@@ -46,18 +46,16 @@ public class Asignatura extends Reservador {
     public void setHorario(RangoHora horario) {
         this.horario = horario;
     }
-    public int getCantAlumnoInsc() {
+
+    public int getCap(){
         return cantAlumnoInsc;
-    }
-    public void setCantAlumnoInsc(int cantAlumnoInsc) {
-        this.cantAlumnoInsc = cantAlumnoInsc;
-    }
+    };
 
     @Override
     public String toString() {
         return "\nCodigo alfanumerico univoco: "+codAlfaUniv+"\nNombre: "+nomAsignatura+"\nRango de fechas de la cursada"+rangoFechCurs+"\nDias de la semana que se dicta: "+diaDicta+"\nHorario: "+horario.toString()+"\nCantidad de alumnos inscriptos: "+cantAlumnoInsc+"\n";
     }
-    public boolean puedoReservar(LocalDate fecha, RangoHora rangoh, char tipo, String nombre, float monto){
+    /**public boolean puedoReservar(LocalDate fecha, RangoHora rangoh, char tipo, String nombre, float monto){
         boolean band = false;
         if(rangoFechCurs.contains(fecha)){
             if(fecha.getDayOfWeek()==diaDicta){
@@ -67,5 +65,11 @@ public class Asignatura extends Reservador {
             }
         }
         return band;
+    }*/
+
+    public void consultaDisponibilidad(Reservador rs, Aula aulax){
+        aulax.estaDisponible()
     }
+
+
 }

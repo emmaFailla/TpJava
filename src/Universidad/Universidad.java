@@ -1,4 +1,7 @@
 package Universidad;
+import com.sun.source.tree.NewArrayTree;
+
+import javax.swing.*;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.Map;
@@ -11,23 +14,32 @@ public class Universidad {
     Scanner sc = new Scanner(System.in);
     ///Metodos ->
     public void filtraxPiso(int piso, String cod){
-        int pisoInicial = piso*100;
-        int pisoFinal = pisoInicial+99;
-        Map<Integer, Aula> subAulas = aulas.subMap(pisoInicial, pisoFinal);
+        int aulaInicial = piso*100;
+        int aulaFinal = aulaInicial+99;
+        Map<Integer, Aula> subAulas = aulas.subMap(aulaInicial, aulaFinal);
         for (Aula aulaC : subAulas.values()) {
             aulaC.muestraxCodigo(cod);
         }
     }
-    public Reservador buscaReservador(String cod){
+    public Reservador creaReserva(String cod){
         for(Reservador reservador : reservadores){
             if(reservador.getCod().equals(cod)){
-                return reservador;
+                Aula aulaConsultada = consultaCapacidad(reservador);
+                aulaConsultada.consultaDisponibilidad(reservador);
             }
         }
-        return null;
     }
 
-    public void creaReservas(Reservador rs){
+    public Aula consultaCapacidad(Reservador rs){
+        //controla capacidad
+        Iterator<Aula> it = aulas.values().iterator();
+        boolean band=false;
+        while(it.hasNext()&&!band){
+            Aula aula = it.next();
+            if(aula.getCapMax() >= rs.getCap()){
+                return aula;
+            }
+        }
     }
 
     public void creaReservas(Reservador rs, LocalDate fechaInicial, RangoHora rangoh){
@@ -74,9 +86,7 @@ public class Universidad {
             System.out.println("El Piso " + pisoAct + "recaudo un total de $" + montoPiso );
         }
     }
-
     public void reporteListado(){
-
     }
 
 }

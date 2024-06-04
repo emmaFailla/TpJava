@@ -4,7 +4,7 @@ import java.util.*;
 public class Aula {
     private final int numero;
     private final int capMax;
-    private HashMap<Integer, Reserva> reservas;
+    private LinkedHashMap<Integer, Reserva> reservas;
     public Aula(int capMax, int num) {
         this.capMax = capMax;
         this.numero = num;
@@ -28,13 +28,19 @@ public class Aula {
     }
 
     public void muestraxCodigo(String cod){
-        for(Reserva reserva : reservas.values()){
-            Reservador rsAct =reserva.getRs();
-            if(rsAct.getCod().equals(cod)){
-                System.out.println(this);
-                System.out.println(reserva);
-            }
+        Iterator<Reserva> it = reservas.values().iterator();
+        Reserva r = it.next();
+        while(it.hasNext()&&!(r.getRs().getCod().equals(cod))){
+            r = it.next();
         }
+        if(it.hasNext()&&r.getRs().getCod().equals(cod)) {
+            System.out.println(this);
+            System.out.println(r);
+        }
+    }
+
+    public boolean consultaDisponibilidad(Reservador rs){
+        rs.
     }
 
 }
