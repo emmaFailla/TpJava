@@ -3,6 +3,7 @@ import java.util.*;
 import java.util.Map;
 import java.util.ArrayList;
 import java.util.Scanner;
+import Comparadores.ComparadorPorCantRes;
 
 public class Universidad {
     ///Atributos->
@@ -59,7 +60,7 @@ public class Universidad {
 
     public  void reporteMonto(){
         float montoAula,montoPiso,montoTotal;
-        int pisoAct,aulaAct;
+        int pisoAct;
         montoTotal = 0;
         //Itera sobre las aulas
         Iterator<Aula> itA = aulas.values().iterator();
@@ -76,25 +77,33 @@ public class Universidad {
                 montoAula = 0;
                 //RecorreReservas
                 while(itR.hasNext()){
-                    Reservador tipoRes = r.getRs();//Con el fin de facilitar el casteo del objeto
-                    if(tipoRes.getClass().getName().equals("Evento") || r.getRs().getClass().getName() .equals("CursoExtension") ){
-                        //Se verifica si es un evento interno o externo
-                       if(tipoRes.getClass().getName().equals("Evento")){
-                           if((((Evento)tipoRes).getEvento().getTipo().equals("Externo") )) montoAula += ((Evento)tipoRes).getEvento().getCobroAlquiler(); //Consultar
-                       }
-                       else montoAula+= ((CursoExtension)tipoRes).getCostoCurso();
-                    }
+                    montoAula+=r.getRs().getCosto();
                     r = itR.next();
                 }
                 montoPiso += montoAula;
                 System.out.println("El Aula " + a.getNum() + "recaudo un total de $" + montoAula );
                 a = itA.next();
             }
+            montoTotal += montoPiso;
             System.out.println("El Piso " + pisoAct + "recaudo un total de $" + montoPiso );
         }
+        System.out.println("El monto total es de $" + montoTotal);
     }
 
     public void reporteListado(){
+            int cantAulas,resTot; cantAulas = resTot = 0;
+            ComparadorPorCantRes comp = new ComparadorPorCantRes();
+            TreeSet<Aula> aulasOrdenadas = new TreeSet<>(comp);
+            for(Aula a : aulas.values()){
+                cantAulas++;
+                resTot += a.getResTot();
+                aulasOrdenadas.add(a);
+            }
+        System.out.println("El promedio de reservas por aulas es de " + (float)resTot / cantAulas);
+        System.out.println("Listado :");
+            for(Aula a : aulasOrdenadas){
+                System.out.println(a);
+            }
 
     }
 
