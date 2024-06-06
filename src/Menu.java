@@ -7,8 +7,9 @@ public class Menu {
         int res;
         Universidad universidad = new Universidad();
         Funciones_Menu fmenu = new Funciones_Menu();
-        System.out.println(("Ema se la come :)"));
+        System.out.println(("Ema se la come :)"));//??? - Ema
         do {
+            //PUEDE IMPLEMENTAR TRY AND CATCH, POR OPERACION DE LECTURA
             System.out.println("Universidad CAECE - Sede Mar del Plata");
             System.out.println("Bienvenido, que desea hacer?");
             System.out.println("* Consultar datos de un Aula - 1");

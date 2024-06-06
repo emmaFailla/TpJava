@@ -6,26 +6,27 @@ public class Evento extends Reservador {
     private String codigo;
     private String descripcion;
     private int cantMaxPart;
-    private tipoEvento evento;
+    private tipoEvento e;
     public  Evento(String fecha, RangoHora horario, String codigo, String descripcion, int cantMaxPart, String tipo, float monto){
         this.fecha = fecha;
         this.horario = horario;
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.cantMaxPart = cantMaxPart;
-        this.evento = new tipoEvento(tipo,monto);
+        this.e = new tipoEvento(tipo,monto);
     }
+    public float getCosto(){return e.getCobroAlquiler();};
     public String getCod(){
         return codigo;
     }
     public void setCod(String cod){
-        this.codigo = cod;
+        codigo = cod;
     }
     public String getDesc(){
         return descripcion;
     }
     public void setDesc(String desc){
-        this.descripcion = desc;
+        descripcion = desc;
     }
     public int getCantMaxPart(){
         return cantMaxPart;
@@ -34,10 +35,10 @@ public class Evento extends Reservador {
         this.cantMaxPart = cantMaxPart;
     }
     public tipoEvento getEvento(){
-        return evento;
+        return e;
     }
     public void setEvento(tipoEvento evento){
-        this.evento = evento;
+        e = evento;
     }
     public String getFecha(){
         return fecha;

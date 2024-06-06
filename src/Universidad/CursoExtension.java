@@ -17,6 +17,7 @@ public class CursoExtension extends Reservador {
     public String getCod(){
         return codAlfa;
     }
+    public float getCosto(){return costoCurso;};
     public void setCod(String cod){
         codAlfa = cod;
     }

@@ -13,6 +13,7 @@ public class tipoEvento {
         return tipo;
     }
 
+
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
