@@ -1,6 +1,8 @@
 package Universidad;
 import java.util.*;
-import Comparadores.ComparadorPorCantRes;
+import java.util.Map;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Universidad {
     ///Atributos->
@@ -26,7 +28,6 @@ public class Universidad {
     }
 
     public void obtieneDatos(String fecha, RangoHora rangoh){
-        //PUEDE IMPLEMENTAR TRY AND CATCH, POR OPERACION DE LECTURA
         System.out.println("\n__Creando Reserva__");
         System.out.println("Ingrese la fecha: ");
         fecha = sc.nextLine();
@@ -45,7 +46,6 @@ public class Universidad {
     }
 
     public void creaReserva(char tipo, String nombre, float monto){
-        //PUEDE IMPLEMENTAR TRY AND CATCH, POR OPERACION DE LECTURA
         System.out.println("\n__Creando Reserva__");
         System.out.println("Ingrese la fecha: ");
         String fecha = sc.nextLine();
@@ -56,11 +56,8 @@ public class Universidad {
         RangoHora rango = new RangoHora(hi, hf);
 
     }
-        /*
-        * Monto recaudado por aula, por piso y total de la institución. Tener en cuenta que las
-    reservas de las asignaturas y eventos internos no generan ingresos.
-        * */
-        public  void reporteMonto(){
+
+    public  void reporteMonto(){
         float montoAula,montoPiso,montoTotal;
         int pisoAct,aulaAct;
         montoTotal = 0;
@@ -79,41 +76,25 @@ public class Universidad {
                 montoAula = 0;
                 //RecorreReservas
                 while(itR.hasNext()){
-                    montoAula+= r.getRs().getCosto();
+                    Reservador tipoRes = r.getRs();//Con el fin de facilitar el casteo del objeto
+                    if(tipoRes.getClass().getName().equals("Evento") || r.getRs().getClass().getName() .equals("CursoExtension") ){
+                        //Se verifica si es un evento interno o externo
+                       if(tipoRes.getClass().getName().equals("Evento")){
+                           if((((Evento)tipoRes).getEvento().getTipo().equals("Externo") )) montoAula += ((Evento)tipoRes).getEvento().getCobroAlquiler(); //Consultar
+                       }
+                       else montoAula+= ((CursoExtension)tipoRes).getCostoCurso();
+                    }
                     r = itR.next();
                 }
                 montoPiso += montoAula;
                 System.out.println("El Aula " + a.getNum() + "recaudo un total de $" + montoAula );
                 a = itA.next();
             }
-            montoTotal += montoPiso;
             System.out.println("El Piso " + pisoAct + "recaudo un total de $" + montoPiso );
         }
-        //Reporte total
-            System.out.println("El monto total recaudado de la universidad fue de  $ " + montoTotal);
     }
 
-    /*
-    * Listado completo de aulas ordenadas descendentemente por cantidad de reservas. Al
-    final del listado, informar cantidad de reservas promedio por aula.
-    * */
-    //Se me ocurre una linkedlist
     public void reporteListado(){
-        int resTot,cantAulas;
-        resTot = cantAulas = 0;
-        ComparadorPorCantRes comp = new ComparadorPorCantRes();
-        TreeSet<Aula> aulasOrdenadas = new TreeSet<>(comp);
-        //Inserto todas las aulas en el nuevo contenedor (Aprobado por el mismisimo Claudio Gea)
-        for(Aula a : aulas.values()){
-            cantAulas++;
-            resTot+= a.getResTot();
-            aulasOrdenadas.add(a);
-        }
-        System.out.println("Hay un promedio de " + (float)resTot/cantAulas + " reservas por aula");
-        System.out.println("Listado : ");
-        for(Aula a : aulasOrdenadas){
-            System.out.println(a);
-        }
 
     }
 

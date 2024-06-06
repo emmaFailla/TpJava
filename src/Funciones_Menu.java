@@ -1,6 +1,10 @@
 import java.nio.channels.ScatteringByteChannel;
 import java.util.Scanner;
 import Universidad.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 public class Funciones_Menu {
     Scanner sc = new Scanner(System.in);
     public void consultaAulas(Universidad uni){
@@ -21,13 +25,56 @@ public class Funciones_Menu {
         res = sc.nextInt();
         System.out.println("Ingrese el codigo de la asignatura/Curso de extension/Evento: \n");
         String cod = sc.next();
-        Reservador resvdor;
-        resvdor = uni.buscaReservador(cod);
-        if(resvdor!=null){
+        Reservador rs;
+        rs = uni.buscaReservador(cod);
+        if(rs!=null){
             switch (res) {
-                case 1, 2:
-                    uni.creaReserva();
+                case 1:
+                    uni.creaReservas(rs);
                     break;
+                case 2:
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    boolean valid=false;
+                    LocalDate fechaI=null;
+                    while(!valid){
+                        System.out.println("\nIngrese la fecha de inicio (dd/MM/yyyy): ");
+                        String input = sc.next();
+                        try{
+                            fechaI=LocalDate.parse(input, dtf);
+                            valid=true;
+                        }catch (DateTimeParseException e){
+                            System.out.println("\nFormato de fecha inválido. Por favor, inténtalo de nuevo.");
+                        }
+                    }
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+                    LocalTime horaI = null;
+                    LocalTime horaF = null;
+                    valid=false;
+                    while (!valid) {
+                        System.out.print("\nIntroduce la hora inicial (HH:mm): ");
+                        String input1 = sc.nextLine();
+
+                        try {
+                            horaI = LocalTime.parse(input1, formatter);
+                            valid = true;
+                        } catch (DateTimeParseException e) {
+                            System.out.println("\nFormato de hora inválido. Por favor, inténtalo de nuevo.");
+                        }
+                    }
+                    valid=false;
+                    while (!valid) {
+                        System.out.print("\nntroduce la hora final (HH:mm): ");
+                        String input2 = sc.nextLine();
+
+                        try {
+                            horaF = LocalTime.parse(input2, formatter);
+                            valid = true;
+                        } catch (DateTimeParseException e) {
+                            System.out.println("\nFormato de hora inválido. Por favor, inténtalo de nuevo.");
+                        }
+                    }
+                    RangoHora rangohora = new RangoHora(horaI, horaF);
+                    uni.creaReservas(rs, fechaI, rangohora);
                 case 3:
                     System.out.println("Es externo? (S/N): ");
                     resc = sc.next().charAt(0);
@@ -36,9 +83,9 @@ public class Funciones_Menu {
                         String nom = sc.next();
                         System.out.println("Ingrese el costo del alquiler: ");
                         float costo = sc.nextFloat();
-                        uni.creaReserva('E', nom, costo);
+                        uni.creaReservas(rs, 'E', nom, costo);
                     }
-                    uni.creaReserva('I',"", 0 );
+                    uni.creaReservas(rs,'I',"", 0 );
                     break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + res);
