@@ -66,10 +66,15 @@ public class Asignatura extends Reservador {
         }
         return band;
     }*/
-
-    public void consultaDisponibilidad(Reservador rs, Aula aulax){
-        aulax.estaDisponible()
+    public RangoFechas getRangoFech() {
+        return rangoFechCurs;
     }
 
+    public RangoHora getRangoHora(){
+        return horario;
+    }
 
+    public float getCostoAlquiler(){
+        return 0;
+    }
 }

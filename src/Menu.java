@@ -6,6 +6,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import Universidad.RangoHora;
+import com.sun.management.UnixOperatingSystemMXBean;
 
 public class Menu {
     public static void despliegaMenu(){
@@ -32,41 +33,9 @@ public class Menu {
                         caece.filtraxPiso(piso, cod);
                         break;
                     case 2:
-                        char resc;
-                        System.out.println("Para que desea reservar un aula?\n");
-                        System.out.println("* Asignatura - 1");
-                        System.out.println("* Curso de extension - 2");
-                        System.out.println("* Evento - 3");
-                        System.out.println("Ingresa una opcion pa: ");
-                        res = sc.nextInt();
                         System.out.println("Ingrese el codigo de la asignatura/Curso de extension/Evento: \n");
                         String code = sc.next();
-                        Reservador rs;
-                        rs = caece.buscaReservador(code);
-                        if(rs!=null){
-                            caece.creaReserva();
-                            switch (res) {
-                                case 1:
-                                    caece.creaReservas(rs);
-                                    break;
-                                case 2:
-
-                                case 3:
-                                    System.out.println("Es externo? (S/N): ");
-                                    resc = sc.next().charAt(0);
-                                    if(resc=='S') {
-                                        System.out.println("Ingrese el nombre de la organizacion: ");
-                                        String nom = sc.next();
-                                        System.out.println("Ingrese el costo del alquiler: ");
-                                        float costo = sc.nextFloat();
-                                        caece.creaReservas(rs, 'E', nom, costo);
-                                    }
-                                    caece.creaReserva(rs,'I',"", 0 );
-                                    break;
-                                default:
-                                    throw new IllegalStateException("Valor inesperado: " + res);
-                            }
-                        }
+                        caece.creaReserva(code);
                         break;
                         case 4:
                             sc = new Scanner(System.in);

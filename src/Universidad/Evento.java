@@ -1,14 +1,15 @@
 package Universidad;
 import java.time.LocalDate;
+import java.util.Scanner;
 
 public class Evento extends Reservador {
-    private String fecha;
+    private LocalDate fecha;
     private RangoHora horario;
     private String codigo;
     private String descripcion;
     private int cantMaxPart;
     private tipoEvento evento;
-    public  Evento(String fecha, RangoHora horario, String codigo, String descripcion, int cantMaxPart, String tipo, float monto){
+    public  Evento(LocalDate fecha, RangoHora horario, String codigo, String descripcion, int cantMaxPart, String tipo, float monto){
         this.fecha = fecha;
         this.horario = horario;
         this.codigo = codigo;
@@ -40,10 +41,10 @@ public class Evento extends Reservador {
     public void setEvento(tipoEvento evento){
         this.evento = evento;
     }
-    public String getFecha(){
+    public LocalDate getFecha(){
         return fecha;
     }
-    public void setFecha(String fecha){
+    public void setFecha(LocalDate fecha){
         this.fecha = fecha;
     }
     public RangoHora getHorario(){
@@ -59,4 +60,28 @@ public class Evento extends Reservador {
     }
 
     public int getCap(){return cantMaxPart;}
+
+    public RangoFechas getRangoFech(){
+        //Convierto el atributo fecha en un rango de fechas
+        RangoFechas rangoFechas = null;
+        rangoFechas.setFechaInicial(fecha);
+        rangoFechas.setFechaFinal(null);
+        return rangoFechas;
+    }
+
+    public RangoHora getRangoHora(){
+        return horario;
+    }
+
+    public String getNom(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese el nombre de la organizacion: ");
+        return sc.next();
+    }
+
+    public float getCostoAlquiler(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese el costo del alquiler: ");
+        return sc.nextFloat();
+    }
 }

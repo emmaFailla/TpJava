@@ -21,7 +21,8 @@ public class Universidad {
             aulaC.muestraxCodigo(cod);
         }
     }
-    public Reservador creaReserva(String cod){
+
+    public void creaReserva(String cod){
         for(Reservador reservador : reservadores){
             if(reservador.getCod().equals(cod)){
                 Aula aulaConsultada = consultaCapacidad(reservador);
@@ -30,24 +31,21 @@ public class Universidad {
         }
     }
 
+
+
     public Aula consultaCapacidad(Reservador rs){
         //controla capacidad
         Iterator<Aula> it = aulas.values().iterator();
+        Aula aulaDisponible = null;
         boolean band=false;
         while(it.hasNext()&&!band){
             Aula aula = it.next();
             if(aula.getCapMax() >= rs.getCap()){
-                return aula;
+                band=true;
+                aulaDisponible = aula;
             }
         }
-    }
-
-    public void creaReservas(Reservador rs, LocalDate fechaInicial, RangoHora rangoh){
-
-    }
-
-    public void creaReservas(Reservador rs, char tipo, String nombre, float monto){
-
+        return aulaDisponible;
     }
 
     public  void reporteMonto(){

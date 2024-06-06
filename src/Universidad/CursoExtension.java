@@ -1,5 +1,9 @@
 package Universidad;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.LocalTime;
+import java.util.Scanner;
 
 public class CursoExtension extends Reservador {
     private String codAlfa;
@@ -53,7 +57,9 @@ public class CursoExtension extends Reservador {
 
     public int getCap(){return cantInscMax;};
 
-    public void creaReserva(){
+    public RangoFechas getRangoFech(){
+        //Lectura por teclado de la fecha
+        Scanner sc = new Scanner(System.in);
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         boolean valid=false;
         LocalDate fechaI=null;
@@ -67,10 +73,19 @@ public class CursoExtension extends Reservador {
                 System.out.println("\nFormato de fecha inválido. Por favor, inténtalo de nuevo.");
             }
         }
+        //Convierte la fecha en un rango de fechas (solo con fecha inicial)
+        RangoFechas rangoFechas;
+        rangoFechas = new RangoFechas(fechaI, null);
+        return rangoFechas;
+    }
+
+    public RangoHora getRangoHora(){
+        Scanner sc = new Scanner(System.in);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         LocalTime horaI = null;
         LocalTime horaF = null;
-        valid=false;
+        //Lectura por teclado de hora Inicial
+        boolean valid=false;
         while (!valid) {
             System.out.print("\nIntroduce la hora inicial (HH:mm): ");
             String input1 = sc.nextLine();
@@ -82,6 +97,7 @@ public class CursoExtension extends Reservador {
                 System.out.println("\nFormato de hora inválido. Por favor, inténtalo de nuevo.");
             }
         }
+        //Lectura por teclado de la hora Final
         valid=false;
         while (!valid) {
             System.out.print("\nntroduce la hora final (HH:mm): ");
@@ -94,10 +110,15 @@ public class CursoExtension extends Reservador {
                 System.out.println("\nFormato de hora inválido. Por favor, inténtalo de nuevo.");
             }
         }
-        RangoHora rangohora = new RangoHora(horaI, horaF);
+        //Crea un rango de horas a partir de la hora Inicial y Final
+        return new RangoHora(horaI, horaF);
+    }
 
-        public int getCantidadDeClases(){
-            return cantClases;
-        };
+    public String getNom(){
+        return "";
+    }
+
+    public float getCostoAlquiler(){
+        return 0;
     }
 }

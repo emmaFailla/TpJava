@@ -2,8 +2,8 @@ package Universidad;
 import java.time.LocalDate;
 
 public class RangoFechas implements Comparable<RangoFechas>{
-    private final LocalDate fechaInicial;
-    private final LocalDate fechaFinal;
+    private LocalDate fechaInicial;
+    private LocalDate fechaFinal;
     public RangoFechas(LocalDate fechaInicial, LocalDate fechaFinal) {
         this.fechaInicial = fechaInicial;
         this.fechaFinal = fechaFinal;
@@ -13,6 +13,12 @@ public class RangoFechas implements Comparable<RangoFechas>{
     }
     public LocalDate getFechaFinal() {
         return fechaFinal;
+    }
+    public void setFechaInicial(LocalDate fechaI) {
+        fechaInicial = fechaI;
+    }
+    public void setFechaFinal(LocalDate fechaF) {
+        fechaFinal = fechaF;
     }
     @Override
     public String toString() {
