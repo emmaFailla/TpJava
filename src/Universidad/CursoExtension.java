@@ -6,14 +6,14 @@ import java.time.LocalTime;
 import java.util.Scanner;
 
 public class CursoExtension extends Reservador {
-    private String codAlfa;
+    private String codigo;
     private String descripcion;
     private int cantInscMax;
     private int cantClases;
     private float costoCurso;
 
     public CursoExtension(String codAlfa, String descripcion, int cantInscMax, int cantClases, float costoCurso){
-        this.codAlfa = codAlfa;
+        this.codigo = codAlfa;
         this.descripcion = descripcion;
         this.cantInscMax = cantInscMax;
         this.cantClases = cantClases;
@@ -22,6 +22,7 @@ public class CursoExtension extends Reservador {
     public String getCod(){
         return codAlfa;
     }
+    public float getCosto(){return costoCurso;};
     public void setCod(String cod){
         codAlfa = cod;
     }
@@ -116,9 +117,5 @@ public class CursoExtension extends Reservador {
 
     public String getNom(){
         return "";
-    }
-
-    public float getCostoAlquiler(){
-        return 0;
     }
 }

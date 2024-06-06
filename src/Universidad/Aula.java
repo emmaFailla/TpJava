@@ -1,4 +1,6 @@
 package Universidad;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.*;
 
 public class Aula {
@@ -36,14 +38,7 @@ public class Aula {
         }
     }
 
-    public boolean consultaDisponibilidad(Reservador rs){
-        //Estos son los datos que me interesan del reservador
-        float costo=rs.getCostoAlquiler();
-        String nom=rs.getNom();
-        RangoFechas rangoFechas = rs.getRangoFech();
-        RangoHora rangoHora = rs.getRangoHora();
-        //Aca deberia de hacer un if para saber que entidad es (en base a si el costo es != 0, el nombre es != "")
-        //En base al if, Itero sobre las reservas y comparo los datos de las reservas con los del reservador
+    public boolean consultaDisponibilidad(LocalDate fecha, RangoHora rangoH){
         Iterator<Reserva> it = reservas.values().iterator();
         boolean band=true;
         while(it.hasNext()&&band){

@@ -3,11 +3,11 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 public class Asignatura extends Reservador {
-    private String codAlfaUniv;
-    private String nomAsignatura;
+    private String codigo;
     private RangoFechas rangoFechCurs;
-    private DayOfWeek diaDicta;
     private RangoHora horario;
+    private String nomAsignatura;
+    private DayOfWeek diaDicta;
     private int cantAlumnoInsc;
     //Constructor
     public Asignatura(String codAlfaUniv, String nomAsignatura, RangoFechas rangoFech, int diaSemana, int cantAlumnoInsc){
@@ -72,9 +72,5 @@ public class Asignatura extends Reservador {
 
     public RangoHora getRangoHora(){
         return horario;
-    }
-
-    public float getCostoAlquiler(){
-        return 0;
     }
 }

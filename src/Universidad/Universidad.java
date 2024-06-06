@@ -21,26 +21,43 @@ public class Universidad {
             aulaC.muestraxCodigo(cod);
         }
     }
-
+    //Asignatura
     public void creaReserva(String cod){
         for(Reservador reservador : reservadores){
             if(reservador.getCod().equals(cod)){
                 Aula aulaConsultada = consultaCapacidad(reservador);
+                //Ciclo while para reservar tantas fechas como cursdadas
+                while()
+                aulaConsultada.consultaDisponibilidad(reservador.);
+            }
+        }
+    }
+    //CursoDeExtension
+    public void creaReserva(String cod, LocalDate fechaInicio, RangoHora rangoHora){
+        for(Reservador reservador : reservadores){
+            if(reservador.getCod().equals(cod)){
+                Aula aulaConsultada = consultaCapacidad(reservador.getCap());
                 aulaConsultada.consultaDisponibilidad(reservador);
             }
         }
     }
 
+    //Eventp
+    public void creaReserva(String cod, ){}
 
 
-    public Aula consultaCapacidad(Reservador rs){
+
+
+
+
+    public Aula consultaCapacidad(int cap){
         //controla capacidad
         Iterator<Aula> it = aulas.values().iterator();
         Aula aulaDisponible = null;
         boolean band=false;
         while(it.hasNext()&&!band){
             Aula aula = it.next();
-            if(aula.getCapMax() >= rs.getCap()){
+            if(aula.getCapMax() >= cap){
                 band=true;
                 aulaDisponible = aula;
             }

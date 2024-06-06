@@ -8,5 +8,5 @@ abstract public class Reservador{
     public abstract RangoFechas getRangoFech();
     public abstract RangoHora getRangoHora();
     public abstract String getNom();
-    public abstract float getCostoAlquiler();
+    public float getCosto(){return 0;};
 }

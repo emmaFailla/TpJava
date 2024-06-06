@@ -3,9 +3,9 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Evento extends Reservador {
+    private String codigo;
     private LocalDate fecha;
     private RangoHora horario;
-    private String codigo;
     private String descripcion;
     private int cantMaxPart;
     private tipoEvento evento;
@@ -79,9 +79,4 @@ public class Evento extends Reservador {
         return sc.next();
     }
 
-    public float getCostoAlquiler(){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Ingrese el costo del alquiler: ");
-        return sc.nextFloat();
-    }
 }

@@ -2,7 +2,8 @@ package Universidad;
 
 public class Reserva {
     //Atributos
-    private static int cantRes = 0;//Estatico, por que es propio de la clase
+    //Estatico, por que es propio de la clase
+    private static int numRes = 0;
     private final int codRes;
     private final String fecha;
     private final RangoHora rangoHorario;
@@ -10,8 +11,8 @@ public class Reserva {
     private final Reservador rs;
     //Constructor
     public Reserva(Reservador resvdor, String fecha, RangoHora rangoHorario){
-        cantRes++;
-        codRes = cantRes;
+        numRes++;
+        codRes = numRes;
         rs=resvdor;
         this.fecha = fecha;
         this.rangoHorario = rangoHorario;

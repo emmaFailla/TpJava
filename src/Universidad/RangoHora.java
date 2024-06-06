@@ -2,36 +2,36 @@ package Universidad;
 import java.time.LocalTime;
 
 public class RangoHora implements Comparable<RangoHora>{
-    private LocalTime inicio;
-    private LocalTime fin;
+    private LocalTime horaInicial;
+    private LocalTime horaFinal;
     public RangoHora(LocalTime inicio, LocalTime fin) {
-        this.inicio = inicio;
-        this.fin = fin;
+        this.horaInicial = inicio;
+        this.horaFinal = fin;
     }
     public LocalTime getInicio() {
-        return inicio;
+        return horaInicial;
     }
     public void setInicio(LocalTime inicio) {
-        this.inicio = inicio;
+        this.horaInicial = inicio;
     }
     public LocalTime getFin() {
-        return fin;
+        return horaFinal;
     }
     public void setFin(LocalTime fin) {
-        this.fin = fin;
+        this.horaFinal = fin;
     }
     @Override
     public String toString() {
-        return "\nHora inicio: " + inicio + "\nHora fin: " + fin + "\n";
+        return "\nHora inicio: " + horaInicial + "\nHora fin: " + horaFinal + "\n";
     }
     @Override
     public int compareTo(RangoHora o) {
-        boolean compara = this.inicio.isAfter(o.getInicio())||this.inicio.equals(o.getInicio())&&this.fin.isBefore(o.getFin())||this.fin.equals(o.getFin());
-        return compara?0:this.fin.compareTo(o.getFin());
+        boolean compara = this.horaInicial.isAfter(o.getInicio())||this.horaInicial.equals(o.getInicio())&&this.horaFinal.isBefore(o.getFin())||this.horaFinal.equals(o.getFin());
+        return compara?0:this.horaFinal.compareTo(o.getFin());
     }
     @Override
     public boolean equals(Object o) {
         if(!(o instanceof RangoHora rh)) return false;
-        return this.inicio.isAfter(rh.getInicio())||this.inicio.equals(rh.getInicio())&&this.fin.isBefore(rh.getFin())||this.fin.equals(rh.getFin());
+        return this.horaInicial.isAfter(rh.getInicio())||this.horaInicial.equals(rh.getInicio())&&this.horaFinal.isBefore(rh.getFin())||this.horaFinal.equals(rh.getFin());
     }
 }
